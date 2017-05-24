@@ -14,3 +14,22 @@ Divide(10, 3)    // "3.(3)"
 Divide(22, 7)    // "3.(142857)"
 Divide(100, 145) // "0.(6896551724137931034482758620)"
 ```
+
+## PrettyJson
+
+Pretty JSON Prints!
+
+```go
+x := map[string]interface{}{"number": 1, "string": "cool", "bool": true, "float": 1.5}
+results, _ := PrettyJson(x)
+fmt.Println(results)
+```
+
+```json
+{
+	"bool": true,
+	"float": 1.5,
+	"number": 1,
+	"string": "cool"
+}
+```
