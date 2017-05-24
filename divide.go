@@ -1,8 +1,8 @@
 package util
 
 import (
-	"fmt"
 	"bytes"
+	"fmt"
 	"strconv"
 )
 
@@ -60,4 +60,3 @@ func exists(myMap map[int]int, key int) bool {
 	_, ok := myMap[key]
 	return ok
 }
-

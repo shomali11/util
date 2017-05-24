@@ -1,8 +1,8 @@
 package util
 
 import (
-	"testing"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestDivide(t *testing.T) {
@@ -13,4 +13,3 @@ func TestDivide(t *testing.T) {
 	assert.Equal(t, Divide(22, 7), "3.(142857)")
 	assert.Equal(t, Divide(100, 145), "0.(6896551724137931034482758620)")
 }
-
