@@ -20,12 +20,14 @@ DefaultIfNil("A", "B")  // "A"
 DefaultIfNil(true, "B") // true
 DefaultIfNil(1, false)  // 1
 
-FirstNonNil(nil, nil)  // nil
-FirstNonNil(nil, "")   // ""
-FirstNonNil("A", "B")  // "A"
-FirstNonNil(true, "B") // true
-FirstNonNil(1, false)  // 1
-FirstNonNil()          // nil
+FirstNonNil(nil, nil)                // nil
+FirstNonNil(nil, "")                 // ""
+FirstNonNil("A", "B")                // "A"
+FirstNonNil(true, "B")               // true
+FirstNonNil(1, false)                // 1
+FirstNonNil(nil, nil, nil, 10)       // 10
+FirstNonNil(nil, nil, nil, nil, nil) // nil
+FirstNonNil()                        // nil
 ```
 
 ## Divide

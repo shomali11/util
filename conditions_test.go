@@ -31,5 +31,7 @@ func TestFirstNonNil(t *testing.T) {
 	assert.Equal(t, FirstNonNil("A", "B"), "A")
 	assert.Equal(t, FirstNonNil(true, "B"), true)
 	assert.Equal(t, FirstNonNil(1, false), 1)
+	assert.Equal(t, FirstNonNil(nil, nil, nil, 10), 10)
+	assert.Equal(t, FirstNonNil(nil, nil, nil, nil, nil), nil)
 	assert.Equal(t, FirstNonNil(), nil)
 }
