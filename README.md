@@ -21,6 +21,13 @@ IsBlank("text") // false
 IsNotBlank("")     // false
 IsNotBlank("	") // false
 IsNotBlank("text") // true
+
+Reverse("")                                            // ""
+Reverse("X")                                           // "X"
+Reverse("😎⚽")                                        // "⚽😎"
+Reverse("Les Mise\u0301rables")                        // "selbare\u0301siM seL"
+Reverse("This `\xc5` is an invalid UTF8 character")    // "retcarahc 8FTU dilavni na si `�` sihT"
+Reverse("The quick bròwn 狐 jumped over the lazy 犬")  // "犬 yzal eht revo depmuj 狐 nwòrb kciuq ehT"
 ```
 
 ## Conditions
