@@ -2,6 +2,27 @@
 
 A group of generic useful utility functions
 
+## Strings
+
+```go
+
+IsEmpty("")     // true
+IsEmpty("text") // false
+IsEmpty("	")  // false
+
+IsNotEmpty("")     // false
+IsNotEmpty("text") // true
+IsNotEmpty("	") // true
+
+IsBlank("")     // true
+IsBlank("	")  // true
+IsBlank("text") // false
+
+IsNotBlank("")     // false
+IsNotBlank("	") // false
+IsNotBlank("text") // true
+```
+
 ## Conditions
 
 ```go
