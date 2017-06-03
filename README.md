@@ -2,6 +2,32 @@
 
 A group of generic useful utility functions
 
+## Conditions
+
+```go
+
+IfThen(1 == 1, "Yes") // "Yes"
+IfThen(1 != 1, "Woo") // nil
+IfThen(1 < 2, "Less") // "Less"
+
+IfThenElse(1 == 1, "Yes", false) // "Yes"
+IfThenElse(1 != 1, nil, 1)       // 1
+IfThenElse(1 < 2, nil, "No")     // nil
+
+DefaultIfNil(nil, nil)  // nil
+DefaultIfNil(nil, "")   // ""
+DefaultIfNil("A", "B")  // "A"
+DefaultIfNil(true, "B") // true
+DefaultIfNil(1, false)  // 1
+
+FirstNonNil(nil, nil)  // nil
+FirstNonNil(nil, "")   // ""
+FirstNonNil("A", "B")  // "A"
+FirstNonNil(true, "B") // true
+FirstNonNil(1, false)  // 1
+FirstNonNil()          // nil
+```
+
 ## Divide
 
 Given two integers representing the numerator and denominator of a fraction, return the fraction in string format with the repeating part enclosed in parentheses
