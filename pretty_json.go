@@ -1,6 +1,7 @@
 package util
 
 import (
+	"bytes"
 	"encoding/json"
 )
 
@@ -10,9 +11,13 @@ const (
 )
 
 func PrettyJson(data interface{}) (string, error) {
-	bytes, err := json.MarshalIndent(data, empty, tab)
+	buffer := new(bytes.Buffer)
+	enc := json.NewEncoder(buffer)
+	enc.SetIndent(empty, tab)
+
+	err := enc.Encode(data)
 	if err != nil {
 		return empty, err
 	}
-	return string(bytes), nil
+	return buffer.String(), nil
 }
