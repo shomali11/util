@@ -32,20 +32,33 @@ func Reverse(text string) string {
 		return text
 	}
 
-	reverseRunes := make([]rune, textRunesLength)
-	endIndex := textRunesLength - 1
-
-	for i := 0; i < textRunesLength; {
-		j := i + 1
+	i, j := 0, 0
+	for i < textRunesLength {
+		j = i + 1
 		for j < textRunesLength && IsMark(textRunes[j]) {
 			j++
 		}
 
-		for k := j - 1; k >= i; k-- {
-			reverseRunes[endIndex] = textRunes[k]
-			endIndex--
+		if IsMark(textRunes[j-1]) {
+			// Reverses Combined Characters
+			reverse(textRunes[i:j], j-i)
 		}
+
+		if j == textRunesLength {
+			break
+		}
+
 		i = j
 	}
-	return string(reverseRunes)
+
+	// Reverses the entire array
+	reverse(textRunes, textRunesLength)
+
+	return string(textRunes)
+}
+
+func reverse(runes []rune, length int) {
+	for i, j := 0, length-1; i < length/2; i, j = i+1, j-1 {
+		runes[i], runes[j] = runes[j], runes[i]
+	}
 }
