@@ -58,6 +58,13 @@ FirstNonNil(nil, nil, nil, nil, nil) // nil
 FirstNonNil()                        // nil
 ```
 
+## Errors
+
+```go
+DefaultErrorIfNil(nil, "Cool")                // "Cool"
+DefaultErrorIfNil(errors.New("Oops"), "Cool") // "Oops"
+```
+
 ## Divide
 
 Given two integers representing the numerator and denominator of a fraction, return the fraction in string format with the repeating part enclosed in parentheses
