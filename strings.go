@@ -50,7 +50,7 @@ func Reverse(text string) string {
 	}
 
 	i, j := 0, 0
-	for i < textRunesLength {
+	for i < textRunesLength && j < textRunesLength {
 		j = i + 1
 		for j < textRunesLength && IsMark(textRunes[j]) {
 			j++
@@ -59,10 +59,6 @@ func Reverse(text string) string {
 		if IsMark(textRunes[j-1]) {
 			// Reverses Combined Characters
 			reverse(textRunes[i:j], j-i)
-		}
-
-		if j == textRunesLength {
-			break
 		}
 
 		i = j
