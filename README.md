@@ -5,7 +5,6 @@ A group of generic useful utility functions
 ## Strings
 
 ```go
-
 IsEmpty("")     // true
 IsEmpty("text") // false
 IsEmpty("	")  // false
@@ -42,7 +41,6 @@ Reverse("The quick bròwn 狐 jumped over the lazy 犬")  // "犬 yzal eht revo 
 ## Conditions
 
 ```go
-
 IfThen(1 == 1, "Yes") // "Yes"
 IfThen(1 != 1, "Woo") // nil
 IfThen(1 < 2, "Less") // "Less"
@@ -72,6 +70,15 @@ FirstNonNil()                        // nil
 ```go
 DefaultErrorIfNil(nil, "Cool")                // "Cool"
 DefaultErrorIfNil(errors.New("Oops"), "Cool") // "Oops"
+```
+
+## Manipulations
+
+```go
+source := rand.NewSource(time.Now().UnixNano())
+array := []interface{}{"a", "b", "c"}
+
+Shuffle(array, source) // [c b a]
 ```
 
 ## Divide
