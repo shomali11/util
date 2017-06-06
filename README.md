@@ -22,6 +22,15 @@ IsNotBlank("")     // false
 IsNotBlank("	") // false
 IsNotBlank("text") // true
 
+Length("")                                          // 0
+Length("X")                                         // 1
+Length("b\u0301")                                   // 1
+Length("😎⚽")                                      // 2
+Length("Les Mise\u0301rables")                      // 14
+Length("ab\u0301cde")                               // 5
+Length("This `\xc5` is an invalid UTF8 character")  // 37
+Length("The quick bròwn 狐 jumped over the lazy 犬") // 40
+
 Reverse("")                                            // ""
 Reverse("X")                                           // "X"
 Reverse("😎⚽")                                        // "⚽😎"

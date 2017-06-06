@@ -24,6 +24,23 @@ func IsNotBlank(text string) bool {
 	return !IsBlank(text)
 }
 
+// Length counts the input while respecting UTF8 encoding and combined characters
+func Length(text string) int {
+	textRunes := []rune(text)
+	textRunesLength := len(textRunes)
+
+	sum, i, j := 0, 0, 0
+	for i < textRunesLength && j < textRunesLength {
+		j = i + 1
+		for j < textRunesLength && IsMark(textRunes[j]) {
+			j++
+		}
+		sum++
+		i = j
+	}
+	return sum
+}
+
 // Reverse reverses the input while respecting UTF8 encoding and combined characters
 func Reverse(text string) string {
 	textRunes := []rune(text)

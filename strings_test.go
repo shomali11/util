@@ -29,6 +29,18 @@ func TestIsNotBlank(t *testing.T) {
 	assert.True(t, IsNotBlank("text"))
 }
 
+func TestLength(t *testing.T) {
+	assert.Equal(t, Length(""), 0)
+	assert.Equal(t, Length("X"), 1)
+	assert.Equal(t, Length("b\u0301"), 1)
+	assert.Equal(t, Length("😎⚽"), 2)
+	assert.Equal(t, Length("Les Mise\u0301rables"), 14)
+	assert.Equal(t, Length("ab\u0301cde"), 5)
+	assert.Equal(t, Length("This `\xc5` is an invalid UTF8 character"), 37)
+	assert.Equal(t, Length("The quick bròwn 狐 jumped over the lazy 犬"), 40)
+	assert.Equal(t, Length("رائد شوملي"), 10)
+}
+
 func TestReverse(t *testing.T) {
 	assert.Equal(t, Reverse(""), "")
 	assert.Equal(t, Reverse("X"), "X")
