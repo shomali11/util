@@ -2,6 +2,24 @@
 
 A group of generic useful utility functions
 
+## Concurrency
+
+```go
+func1 := func() {
+        for char := 'a'; char < 'a' + 3; char++ {
+            fmt.Printf("%c ", char)
+        }
+}
+
+func2 := func() {
+        for number := 1; number < 4; number++ {
+            fmt.Printf("%d ", number)
+        }
+}
+
+Parallelize(func1, func2)  // a 1 b 2 c 3
+```
+
 ## Strings
 
 ```go

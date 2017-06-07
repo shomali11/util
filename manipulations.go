@@ -4,6 +4,7 @@ import (
 	"math/rand"
 )
 
+// Shuffle shuffles the array using a random source
 func Shuffle(array []interface{}, source rand.Source) {
 	random := rand.New(source)
 	for i := len(array) - 1; i > 0; i-- {
