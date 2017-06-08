@@ -1,4 +1,4 @@
-package util
+package runes
 
 import (
 	"github.com/stretchr/testify/assert"

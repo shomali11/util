@@ -1,7 +1,8 @@
-package util
+package strings
 
 import (
 	"strings"
+	"github.com/shomali11/util/runes"
 )
 
 // IsEmpty returns true if the string is empty
@@ -32,7 +33,7 @@ func Length(text string) int {
 	sum, i, j := 0, 0, 0
 	for i < textRunesLength && j < textRunesLength {
 		j = i + 1
-		for j < textRunesLength && IsMark(textRunes[j]) {
+		for j < textRunesLength && runes.IsMark(textRunes[j]) {
 			j++
 		}
 		sum++
@@ -52,11 +53,11 @@ func Reverse(text string) string {
 	i, j := 0, 0
 	for i < textRunesLength && j < textRunesLength {
 		j = i + 1
-		for j < textRunesLength && IsMark(textRunes[j]) {
+		for j < textRunesLength && runes.IsMark(textRunes[j]) {
 			j++
 		}
 
-		if IsMark(textRunes[j-1]) {
+		if runes.IsMark(textRunes[j-1]) {
 			// Reverses Combined Characters
 			reverse(textRunes[i:j], j-i)
 		}

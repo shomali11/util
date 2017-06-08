@@ -99,7 +99,7 @@ array := []interface{}{"a", "b", "c"}
 Shuffle(array, source) // [c b a]
 ```
 
-## Divide
+## Calculations
 
 Given two integers representing the numerator and denominator of a fraction, return the fraction in string format with the repeating part enclosed in parentheses
 
