@@ -1,8 +1,8 @@
 package strings
 
 import (
-	"strings"
 	"github.com/shomali11/util/runes"
+	"strings"
 )
 
 // IsEmpty returns true if the string is empty
