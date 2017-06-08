@@ -10,6 +10,7 @@ const (
 	tab   = "\t"
 )
 
+// PrettyJson returns a pretty json
 func PrettyJson(data interface{}) (string, error) {
 	buffer := new(bytes.Buffer)
 	encoder := json.NewEncoder(buffer)
