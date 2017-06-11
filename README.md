@@ -15,98 +15,147 @@ govendor fetch github.com/shomali11/util
 ## Concurrency
 
 ```go
-func1 := func() {
-        for char := 'a'; char < 'a' + 3; char++ {
-            fmt.Printf("%c ", char)
-        }
-}
+package main
 
-func2 := func() {
-        for number := 1; number < 4; number++ {
-            fmt.Printf("%d ", number)
-        }
-}
+import (
+	"fmt"
+	"github.com/shomali11/util/concurrency"
+)
 
-Parallelize(func1, func2)  // a 1 b 2 c 3
+func main() {
+    func1 := func() {
+            for char := 'a'; char < 'a' + 3; char++ {
+                fmt.Printf("%c ", char)
+            }
+    }
+    
+    func2 := func() {
+            for number := 1; number < 4; number++ {
+                fmt.Printf("%d ", number)
+            }
+    }
+    
+    concurrency.Parallelize(func1, func2)  // a 1 b 2 c 3
+}
 ```
 
 ## Strings
 
 ```go
-IsEmpty("")     // true
-IsEmpty("text") // false
-IsEmpty("	")  // false
+package main
 
-IsNotEmpty("")     // false
-IsNotEmpty("text") // true
-IsNotEmpty("	") // true
+import (
+	"fmt"
+	"github.com/shomali11/util/strings"
+)
 
-IsBlank("")     // true
-IsBlank("	")  // true
-IsBlank("text") // false
+func main() {
+	fmt.Println(strings.IsEmpty(""))     // true
+	fmt.Println(strings.IsEmpty("text")) // false
+	fmt.Println(strings.IsEmpty("	"))  // false
 
-IsNotBlank("")     // false
-IsNotBlank("	") // false
-IsNotBlank("text") // true
+	fmt.Println(strings.IsNotEmpty(""))     // false
+	fmt.Println(strings.IsNotEmpty("text")) // true
+	fmt.Println(strings.IsNotEmpty("	")) // true
 
-Length("")                                          // 0
-Length("X")                                         // 1
-Length("b\u0301")                                   // 1
-Length("😎⚽")                                      // 2
-Length("Les Mise\u0301rables")                      // 14
-Length("ab\u0301cde")                               // 5
-Length("This `\xc5` is an invalid UTF8 character")  // 37
-Length("The quick bròwn 狐 jumped over the lazy 犬") // 40
+	fmt.Println(strings.IsBlank(""))     // true
+	fmt.Println(strings.IsBlank("	"))  // true
+	fmt.Println(strings.IsBlank("text")) // false
 
-Reverse("")                                            // ""
-Reverse("X")                                           // "X"
-Reverse("😎⚽")                                        // "⚽😎"
-Reverse("Les Mise\u0301rables")                        // "selbare\u0301siM seL"
-Reverse("This `\xc5` is an invalid UTF8 character")    // "retcarahc 8FTU dilavni na si `�` sihT"
-Reverse("The quick bròwn 狐 jumped over the lazy 犬")  // "犬 yzal eht revo depmuj 狐 nwòrb kciuq ehT"
+	fmt.Println(strings.IsNotBlank(""))     // false
+	fmt.Println(strings.IsNotBlank("	")) // false
+	fmt.Println(strings.IsNotBlank("text")) // true
+
+	fmt.Println(strings.Length(""))                                          // 0
+	fmt.Println(strings.Length("X"))                                         // 1
+	fmt.Println(strings.Length("b\u0301"))                                   // 1
+	fmt.Println(strings.Length("😎⚽"))                                      // 2
+	fmt.Println(strings.Length("Les Mise\u0301rables"))                      // 14
+	fmt.Println(strings.Length("ab\u0301cde"))                               // 5
+	fmt.Println(strings.Length("This `\xc5` is an invalid UTF8 character"))  // 37
+	fmt.Println(strings.Length("The quick bròwn 狐 jumped over the lazy 犬")) // 40
+
+	fmt.Println(strings.Reverse(""))                                            // ""
+	fmt.Println(strings.Reverse("X"))                                           // "X"
+	fmt.Println(strings.Reverse("😎⚽"))                                        // "⚽😎"
+	fmt.Println(strings.Reverse("Les Mise\u0301rables"))                        // "selbare\u0301siM seL"
+	fmt.Println(strings.Reverse("This `\xc5` is an invalid UTF8 character"))    // "retcarahc 8FTU dilavni na si `�` sihT"
+	fmt.Println(strings.Reverse("The quick bròwn 狐 jumped over the lazy 犬"))  // "犬 yzal eht revo depmuj 狐 nwòrb kciuq ehT"
+}
 ```
 
 ## Conditions
 
 ```go
-IfThen(1 == 1, "Yes") // "Yes"
-IfThen(1 != 1, "Woo") // nil
-IfThen(1 < 2, "Less") // "Less"
+package main
 
-IfThenElse(1 == 1, "Yes", false) // "Yes"
-IfThenElse(1 != 1, nil, 1)       // 1
-IfThenElse(1 < 2, nil, "No")     // nil
+import (
+	"fmt"
+	"github.com/shomali11/util/conditions"
+)
 
-DefaultIfNil(nil, nil)  // nil
-DefaultIfNil(nil, "")   // ""
-DefaultIfNil("A", "B")  // "A"
-DefaultIfNil(true, "B") // true
-DefaultIfNil(1, false)  // 1
+func main() {
+	fmt.Println(conditions.IfThen(1 == 1, "Yes")) // "Yes"
+	fmt.Println(conditions.IfThen(1 != 1, "Woo")) // nil
+	fmt.Println(conditions.IfThen(1 < 2, "Less")) // "Less"
 
-FirstNonNil(nil, nil)                // nil
-FirstNonNil(nil, "")                 // ""
-FirstNonNil("A", "B")                // "A"
-FirstNonNil(true, "B")               // true
-FirstNonNil(1, false)                // 1
-FirstNonNil(nil, nil, nil, 10)       // 10
-FirstNonNil(nil, nil, nil, nil, nil) // nil
-FirstNonNil()                        // nil
+	fmt.Println(conditions.IfThenElse(1 == 1, "Yes", false)) // "Yes"
+	fmt.Println(conditions.IfThenElse(1 != 1, nil, 1))       // 1
+	fmt.Println(conditions.IfThenElse(1 < 2, nil, "No"))     // nil
+
+	fmt.Println(conditions.DefaultIfNil(nil, nil))  // nil
+	fmt.Println(conditions.DefaultIfNil(nil, ""))   // ""
+	fmt.Println(conditions.DefaultIfNil("A", "B"))  // "A"
+	fmt.Println(conditions.DefaultIfNil(true, "B")) // true
+	fmt.Println(conditions.DefaultIfNil(1, false))  // 1
+
+	fmt.Println(conditions.FirstNonNil(nil, nil))                // nil
+	fmt.Println(conditions.FirstNonNil(nil, ""))                 // ""
+	fmt.Println(conditions.FirstNonNil("A", "B"))                // "A"
+	fmt.Println(conditions.FirstNonNil(true, "B"))               // true
+	fmt.Println(conditions.FirstNonNil(1, false))                // 1
+	fmt.Println(conditions.FirstNonNil(nil, nil, nil, 10))       // 10
+	fmt.Println(conditions.FirstNonNil(nil, nil, nil, nil, nil)) // nil
+	fmt.Println(conditions.FirstNonNil())                        // nil
+}
 ```
 
 ## Errors
 
 ```go
-DefaultErrorIfNil(nil, "Cool")                // "Cool"
-DefaultErrorIfNil(errors.New("Oops"), "Cool") // "Oops"
+package main
+
+import (
+	"fmt"
+	"github.com/shomali11/util/errors"
+)
+
+func main() {
+	fmt.Println(errors.DefaultErrorIfNil(nil, "Cool"))                // "Cool"
+	fmt.Println(errors.DefaultErrorIfNil(errors.New("Oops"), "Cool")) // "Oops"
+}
 ```
 
 ## Manipulations
 
 ```go
-source := rand.NewSource(time.Now().UnixNano())
-array := []interface{}{"a", "b", "c"}
+package main
 
-Shuffle(array, source) // [c b a]
+import (
+	"fmt"
+	"github.com/shomali11/util/manipulations"
+	"math/rand"
+	"time"
+)
+
+func main() {
+	source := rand.NewSource(time.Now().UnixNano())
+
+	array := []interface{}{"a", "b", "c"}
+	manipulations.Shuffle(array, source)
+
+	fmt.Println(array) // [c b a]
+}
 ```
 
 ## Calculations
@@ -114,12 +163,21 @@ Shuffle(array, source) // [c b a]
 Given two integers representing the numerator and denominator of a fraction, return the fraction in string format with the repeating part enclosed in parentheses
 
 ```go
-Divide(0, 0)     // "ERROR"
-Divide(1, 2)     // "0.5(0)"
-Divide(0, 3)     // "0.(0)"
-Divide(10, 3)    // "3.(3)"
-Divide(22, 7)    // "3.(142857)"
-Divide(100, 145) // "0.(6896551724137931034482758620)"
+package main
+
+import (
+	"fmt"
+	"github.com/shomali11/util/calculations"
+)
+
+func main() {
+    fmt.Println(calculations.Divide(0, 0))     // "ERROR"
+    fmt.Println(calculations.Divide(1, 2))     // "0.5(0)"
+    fmt.Println(calculations.Divide(0, 3))     // "0.(0)"
+    fmt.Println(calculations.Divide(10, 3))    // "3.(3)"
+    fmt.Println(calculations.Divide(22, 7))    // "3.(142857)"
+    fmt.Println(calculations.Divide(100, 145)) // "0.(6896551724137931034482758620)"
+}
 ```
 
 ## PrettyJson
@@ -127,9 +185,17 @@ Divide(100, 145) // "0.(6896551724137931034482758620)"
 Pretty JSON Prints!
 
 ```go
-x := map[string]interface{}{"number": 1, "string": "cool", "bool": true, "float": 1.5}
-results, _ := PrettyJson(x)
-fmt.Println(results)
+package main
+
+import (
+	"fmt"
+	"github.com/shomali11/util/json"
+)
+
+func main() {
+    x := map[string]interface{}{"number": 1, "string": "cool", "bool": true, "float": 1.5}    
+    fmt.Println(json.PrettyJson(x))
+}
 ```
 
 ```json
