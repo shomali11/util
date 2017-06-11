@@ -2,13 +2,15 @@
 
 A group of generic useful utility functions
 
-# Usage
+## Usage
 
 Using `govendor` [github.com/kardianos/govendor](https://github.com/kardianos/govendor):
 
 ```
 govendor fetch github.com/shomali11/util
 ```
+
+# Examples
 
 ## Concurrency
 
