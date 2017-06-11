@@ -1,4 +1,4 @@
-package util
+package main
 
 import (
 	"fmt"
@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-func Concurrency() {
+func main() {
 	concurrency.Parallelize(Strings, Conditions, Calculations, Manipulations, Json)
 }
 
