@@ -12,7 +12,7 @@ govendor fetch github.com/shomali11/util
 
 ## Dependencies
 
-* `parallelizer` [github.com/shomali11/parallelizer](https://github.com/shomali11/parallelizer):
+* `parallelizer` [github.com/shomali11/parallelizer](https://github.com/shomali11/parallelizer)
 
 
 # Examples
