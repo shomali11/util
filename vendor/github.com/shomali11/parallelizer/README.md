@@ -51,7 +51,7 @@ Output:
 ```text
 a 1 b 2 c 3 
 Done
-Timed out? false
+Error: <nil>
 ```
 
 ## Example 2
@@ -98,5 +98,5 @@ Output:
 ```text
 
 Done
-Timed out? true
+Error: timeout
 ```

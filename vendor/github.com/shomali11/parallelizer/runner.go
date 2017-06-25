@@ -3,6 +3,11 @@ package parallelizer
 import (
 	"sync"
 	"time"
+	"errors"
+)
+
+const (
+	timeoutError = "timeout"
 )
 
 // Runner allows you to parallelize function calls with an optional timeout
@@ -10,8 +15,8 @@ type Runner struct {
 	Timeout time.Duration
 }
 
-// Run parallelizes the function calls and returns a boolean that determines whether the functions completed or timed out
-func (p *Runner) Run(functions ...func()) bool {
+// Run parallelizes the function calls
+func (p *Runner) Run(functions ...func()) error {
 	var waitGroup sync.WaitGroup
 	waitGroup.Add(len(functions))
 
@@ -25,11 +30,11 @@ func (p *Runner) Run(functions ...func()) bool {
 	return p.wait(&waitGroup)
 }
 
-func (p *Runner) wait(waitGroup *sync.WaitGroup) bool {
+func (p *Runner) wait(waitGroup *sync.WaitGroup) error {
 	// If no timeout was provided
 	if p.Timeout <= 0 {
 		waitGroup.Wait()
-		return true
+		return nil
 	}
 
 	channel := make(chan struct{})
@@ -41,8 +46,8 @@ func (p *Runner) wait(waitGroup *sync.WaitGroup) bool {
 
 	select {
 	case <-channel:
-		return true
+		return nil
 	case <-time.After(p.Timeout):
-		return false
+		return errors.New(timeoutError)
 	}
 }
