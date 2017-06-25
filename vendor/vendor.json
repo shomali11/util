@@ -15,6 +15,12 @@
 			"revisionTime": "2016-01-10T10:55:54Z"
 		},
 		{
+			"checksumSHA1": "pz605hqsEY1O67965E2x7bt4Bpw=",
+			"path": "github.com/shomali11/parallelizer",
+			"revision": "7b6d8e36fe62c4faa319edb25599b44ba6b54b6f",
+			"revisionTime": "2017-06-25T00:20:57Z"
+		},
+		{
 			"checksumSHA1": "K0crHygPTP42i1nLKWphSlvOQJw=",
 			"path": "github.com/stretchr/objx",
 			"revision": "1a9d0bb9f541897e62256577b352fdbc1fb4fd94",

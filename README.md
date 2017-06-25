@@ -10,6 +10,11 @@ Using `govendor` [github.com/kardianos/govendor](https://github.com/kardianos/go
 govendor fetch github.com/shomali11/util
 ```
 
+## Dependencies
+
+* `parallelizer` [github.com/shomali11/parallelizer](https://github.com/shomali11/parallelizer):
+
+
 # Examples
 
 ## Concurrency
@@ -18,8 +23,9 @@ govendor fetch github.com/shomali11/util
 package main
 
 import (
-	"fmt"
 	"github.com/shomali11/util/concurrency"
+	"time"
+	"fmt"
 )
 
 func main() {
@@ -36,6 +42,8 @@ func main() {
     }
     
     concurrency.Parallelize(func1, func2)  // a 1 b 2 c 3
+    
+    concurrency.ParallelizeTimeout(time.Minute, func1, func2)  // a 1 b 2 c 3
 }
 ```
 
@@ -45,8 +53,8 @@ func main() {
 package main
 
 import (
-	"fmt"
 	"github.com/shomali11/util/strings"
+	"fmt"
 )
 
 func main() {
@@ -90,8 +98,8 @@ func main() {
 package main
 
 import (
-	"fmt"
 	"github.com/shomali11/util/conditions"
+	"fmt"
 )
 
 func main() {
@@ -126,8 +134,8 @@ func main() {
 package main
 
 import (
-	"fmt"
 	"github.com/shomali11/util/errors"
+	"fmt"
 )
 
 func main() {
@@ -142,10 +150,10 @@ func main() {
 package main
 
 import (
-	"fmt"
 	"github.com/shomali11/util/manipulations"
 	"math/rand"
 	"time"
+	"fmt"
 )
 
 func main() {
@@ -166,8 +174,8 @@ Given two integers representing the numerator and denominator of a fraction, ret
 package main
 
 import (
-	"fmt"
 	"github.com/shomali11/util/calculations"
+	"fmt"
 )
 
 func main() {
@@ -188,8 +196,8 @@ Pretty JSON Prints!
 package main
 
 import (
-	"fmt"
 	"github.com/shomali11/util/json"
+	"fmt"
 )
 
 func main() {

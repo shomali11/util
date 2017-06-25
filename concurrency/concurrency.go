@@ -1,18 +1,17 @@
 package concurrency
 
-import "sync"
+import (
+	"github.com/shomali11/parallelizer"
+	"time"
+)
 
 // Parallelize parallelizes the function calls
 func Parallelize(functions ...func()) {
-	var waitGroup sync.WaitGroup
-	waitGroup.Add(len(functions))
+	ParallelizeTimeout(0, functions...)
+}
 
-	defer waitGroup.Wait()
-
-	for _, function := range functions {
-		go func(copy func()) {
-			defer waitGroup.Done()
-			copy()
-		}(function)
-	}
+// ParallelizeTimeout parallelizes the function calls with a timeout
+func ParallelizeTimeout(timeout time.Duration, functions ...func()) {
+	runner := parallelizer.Runner{Timeout: timeout}
+	runner.Run(functions...)
 }
