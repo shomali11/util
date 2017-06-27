@@ -12,6 +12,10 @@ func Parallelize(functions ...func()) {
 
 // ParallelizeTimeout parallelizes the function calls with a timeout
 func ParallelizeTimeout(timeout time.Duration, functions ...func()) {
-	runner := parallelizer.Runner{Timeout: timeout}
-	runner.Run(functions...)
+	options := &parallelizer.Options{Timeout: timeout}
+	group := parallelizer.NewGroup(options)
+	for _, function := range functions {
+		group.Add(function)
+	}
+	group.Run()
 }
