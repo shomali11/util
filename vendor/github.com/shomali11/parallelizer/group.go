@@ -47,7 +47,7 @@ func (g *Group) Run() error {
 	g.waitGroup = &sync.WaitGroup{}
 	g.waitGroup.Add(len(g.functions))
 
-	jobs := make(chan func())
+	jobs := make(chan func(), len(g.functions))
 
 	poolSize := g.getPoolSize()
 	for i := 1; i <= poolSize; i++ {
