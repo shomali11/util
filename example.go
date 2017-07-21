@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/shomali11/util/calculations"
+	"github.com/shomali11/util/compression"
 	"github.com/shomali11/util/concurrency"
 	"github.com/shomali11/util/conditions"
 	"github.com/shomali11/util/errors"
@@ -20,6 +21,7 @@ func main() {
 	Conditions()
 	Calculations()
 	Manipulations()
+	Compression()
 	Concurrency()
 }
 
@@ -100,6 +102,10 @@ func Calculations() {
 	fmt.Println(calculations.Divide(10, 3))
 	fmt.Println(calculations.Divide(22, 7))
 	fmt.Println(calculations.Divide(100, 145))
+}
+
+func Compression() {
+	fmt.Println(compression.Compress("Raed Shomali"))
 }
 
 func Manipulations() {

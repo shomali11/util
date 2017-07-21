@@ -47,6 +47,21 @@ func main() {
 }
 ```
 
+## Compression
+
+```go
+package main
+
+import (
+	"github.com/shomali11/util/compression"
+	"fmt"
+)
+
+func main() {
+	fmt.Println(compression.Compress("Raed Shomali"))
+}
+```
+
 ## Strings
 
 ```go
