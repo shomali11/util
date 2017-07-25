@@ -47,18 +47,36 @@ func main() {
 }
 ```
 
-## Compression
+## Hashes
 
 ```go
 package main
 
 import (
-	"github.com/shomali11/util/compression"
+	"github.com/shomali11/util/hashes"
 	"fmt"
 )
 
 func main() {
-	fmt.Println(compression.Compress("Raed Shomali"))
+	fmt.Println(hashes.MD5("Raed Shomali"))    // c313bc3b48fcfed9abc733429665b105
+	fmt.Println(hashes.SHA1("Raed Shomali"))   // e0d66f6f09de72942e83289cc994b3c721ab34c5
+	fmt.Println(hashes.SHA256("Raed Shomali")) // 75894b9be21065a833e57bfe4440b375fc216f120a965243c9be8b2dc36709c2
+	fmt.Println(hashes.SHA512("Raed Shomali")) // 406e8d495140187a8b09893c30d054cf385ad7359855db0d2e0386c7189ac1c4667a4816d1b63a19f3d8ccdcbace7861ec4cc6ff5e2a1659c8f4360bda699b42
+}
+```
+
+## Compressions
+
+```go
+package main
+
+import (
+	"github.com/shomali11/util/compressions"
+	"fmt"
+)
+
+func main() {
+	fmt.Println(compressions.Compress("Raed Shomali"))
 }
 ```
 

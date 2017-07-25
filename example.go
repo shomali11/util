@@ -3,10 +3,11 @@ package main
 import (
 	"fmt"
 	"github.com/shomali11/util/calculations"
-	"github.com/shomali11/util/compression"
+	"github.com/shomali11/util/compressions"
 	"github.com/shomali11/util/concurrency"
 	"github.com/shomali11/util/conditions"
 	"github.com/shomali11/util/errors"
+	"github.com/shomali11/util/hashes"
 	"github.com/shomali11/util/json"
 	"github.com/shomali11/util/manipulations"
 	"github.com/shomali11/util/strings"
@@ -16,12 +17,13 @@ import (
 
 func main() {
 	Json()
+	Hashes()
 	Errors()
 	Strings()
 	Conditions()
 	Calculations()
 	Manipulations()
-	Compression()
+	Compressions()
 	Concurrency()
 }
 
@@ -104,8 +106,15 @@ func Calculations() {
 	fmt.Println(calculations.Divide(100, 145))
 }
 
-func Compression() {
-	fmt.Println(compression.Compress("Raed Shomali"))
+func Compressions() {
+	fmt.Println(compressions.Compress("Raed Shomali"))
+}
+
+func Hashes() {
+	fmt.Println(hashes.MD5("Raed Shomali"))
+	fmt.Println(hashes.SHA1("Raed Shomali"))
+	fmt.Println(hashes.SHA256("Raed Shomali"))
+	fmt.Println(hashes.SHA512("Raed Shomali"))
 }
 
 func Manipulations() {
