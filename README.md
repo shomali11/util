@@ -221,21 +221,21 @@ func main() {
 }
 ```
 
-## PrettyJson
+## Structs
 
-Pretty JSON Prints!
+Return a pretty JSON representation of any interface
 
 ```go
 package main
 
 import (
-	"github.com/shomali11/util/json"
+	"github.com/shomali11/util/structs"
 	"fmt"
 )
 
 func main() {
     x := map[string]interface{}{"number": 1, "string": "cool", "bool": true, "float": 1.5}    
-    fmt.Println(json.PrettyJson(x))
+    fmt.Println(structs.PrettyJson(x))
 }
 ```
 
@@ -246,4 +246,47 @@ func main() {
 	"number": 1,
 	"string": "cool"
 }
+```
+
+Convert any interface to a String
+
+```go
+package main
+
+import (
+	"github.com/shomali11/util/structs"
+	"fmt"
+)
+
+func main() {
+    x := map[string]interface{}{"number": 1, "string": "cool", "bool": true, "float": 1.5}    
+    fmt.Println(structs.Stringify(x))
+}
+```
+
+```
+{"bool":true,"float":1.5,"number":1,"string":"cool"} <nil>
+```
+
+Convert any string back to its original struct
+
+```go
+package main
+
+import (
+	"github.com/shomali11/util/structs"
+	"fmt"
+)
+
+func main() {
+	x := "{\"bool\":true,\"float\":1.5,\"number\":1,\"string\":\"cool\"}"
+	var results map[string]interface{}
+    fmt.Println(structs.Structify(x, &results))
+    fmt.Println(results)
+}
+```
+
+```
+<nil>
+map[bool:true float:1.5 number:1 string:cool]
 ```

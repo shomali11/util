@@ -8,18 +8,18 @@ import (
 	"github.com/shomali11/util/conditions"
 	"github.com/shomali11/util/errors"
 	"github.com/shomali11/util/hashes"
-	"github.com/shomali11/util/json"
 	"github.com/shomali11/util/manipulations"
 	"github.com/shomali11/util/strings"
+	"github.com/shomali11/util/structs"
 	"math/rand"
 	"time"
 )
 
 func main() {
-	Json()
 	Hashes()
 	Errors()
 	Strings()
+	Structs()
 	Conditions()
 	Calculations()
 	Manipulations()
@@ -27,9 +27,15 @@ func main() {
 	Concurrency()
 }
 
-func Json() {
+func Structs() {
 	x := map[string]interface{}{"number": 1, "string": "cool", "bool": true, "float": 1.5}
-	fmt.Println(json.PrettyJson(x))
+	fmt.Println(structs.PrettyJson(x))
+	fmt.Println(structs.Stringify(x))
+
+	data := "{\"bool\":true,\"float\":1.5,\"number\":1,\"string\":\"cool\"}"
+	var results map[string]interface{}
+	fmt.Println(structs.Structify(data, &results))
+	fmt.Println(results)
 }
 
 func Errors() {
