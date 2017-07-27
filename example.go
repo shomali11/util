@@ -6,11 +6,11 @@ import (
 	"github.com/shomali11/util/compressions"
 	"github.com/shomali11/util/concurrency"
 	"github.com/shomali11/util/conditions"
+	"github.com/shomali11/util/conversions"
 	"github.com/shomali11/util/errors"
 	"github.com/shomali11/util/hashes"
 	"github.com/shomali11/util/manipulations"
 	"github.com/shomali11/util/strings"
-	"github.com/shomali11/util/structs"
 	"math/rand"
 	"time"
 )
@@ -19,22 +19,22 @@ func main() {
 	Hashes()
 	Errors()
 	Strings()
-	Structs()
 	Conditions()
+	Conversions()
 	Calculations()
 	Manipulations()
 	Compressions()
 	Concurrency()
 }
 
-func Structs() {
+func Conversions() {
 	x := map[string]interface{}{"number": 1, "string": "cool", "bool": true, "float": 1.5}
-	fmt.Println(structs.PrettyJson(x))
-	fmt.Println(structs.Stringify(x))
+	fmt.Println(conversions.PrettyJson(x))
+	fmt.Println(conversions.Stringify(x))
 
 	data := "{\"bool\":true,\"float\":1.5,\"number\":1,\"string\":\"cool\"}"
 	var results map[string]interface{}
-	fmt.Println(structs.Structify(data, &results))
+	fmt.Println(conversions.Structify(data, &results))
 	fmt.Println(results)
 }
 

@@ -1,4 +1,4 @@
-package structs
+package conversions
 
 import (
 	"github.com/stretchr/testify/assert"
