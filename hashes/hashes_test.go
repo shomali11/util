@@ -5,6 +5,26 @@ import (
 	"testing"
 )
 
+func TestFNV32(t *testing.T) {
+	data := FNV32("Raed Shomali")
+	assert.Equal(t, data, uint32(0x194b953a))
+}
+
+func TestFNV32a(t *testing.T) {
+	data := FNV32a("Raed Shomali")
+	assert.Equal(t, data, uint32(0xdd36df08))
+}
+
+func TestFNV64(t *testing.T) {
+	data := FNV64("Raed Shomali")
+	assert.Equal(t, data, uint64(0xc03d55b5ff7722da))
+}
+
+func TestFNV64a(t *testing.T) {
+	data := FNV64a("Raed Shomali")
+	assert.Equal(t, data, uint64(0xf7fc847f1e6b4148))
+}
+
 func TestMD5(t *testing.T) {
 	data := MD5("Raed Shomali")
 	assert.Equal(t, data, "c313bc3b48fcfed9abc733429665b105")
