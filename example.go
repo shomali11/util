@@ -117,6 +117,10 @@ func Compressions() {
 }
 
 func Hashes() {
+	fmt.Println(hashes.FNV32("Raed Shomali"))
+	fmt.Println(hashes.FNV32a("Raed Shomali"))
+	fmt.Println(hashes.FNV64("Raed Shomali"))
+	fmt.Println(hashes.FNV64a("Raed Shomali"))
 	fmt.Println(hashes.MD5("Raed Shomali"))
 	fmt.Println(hashes.SHA1("Raed Shomali"))
 	fmt.Println(hashes.SHA256("Raed Shomali"))

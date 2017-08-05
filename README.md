@@ -58,6 +58,10 @@ import (
 )
 
 func main() {
+	fmt.Println(hashes.FNV32("Raed Shomali"))  // 424383802
+	fmt.Println(hashes.FNV32a("Raed Shomali")) // 3711360776
+	fmt.Println(hashes.FNV64("Raed Shomali"))  // 13852322269024953050
+	fmt.Println(hashes.FNV64a("Raed Shomali")) // 17869303103005344072
 	fmt.Println(hashes.MD5("Raed Shomali"))    // c313bc3b48fcfed9abc733429665b105
 	fmt.Println(hashes.SHA1("Raed Shomali"))   // e0d66f6f09de72942e83289cc994b3c721ab34c5
 	fmt.Println(hashes.SHA256("Raed Shomali")) // 75894b9be21065a833e57bfe4440b375fc216f120a965243c9be8b2dc36709c2
