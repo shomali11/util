@@ -111,6 +111,21 @@ func main() {
 	fmt.Println(strings.IsNotBlank("	")) // false
 	fmt.Println(strings.IsNotBlank("text")) // true
 
+	fmt.Println(strings.Left("", 5))            // "     "
+	fmt.Println(strings.Left("X", 5))           // "X    "
+	fmt.Println(strings.Left("😎⚽", 4))        // "😎⚽  "
+	fmt.Println(strings.Left("ab\u0301cde", 8)) // "ab́cde   "
+
+	fmt.Println(strings.Right("", 5))            // "     "
+	fmt.Println(strings.Right("X", 5))           // "    X"
+	fmt.Println(strings.Right("😎⚽", 4))        // "  😎⚽"
+	fmt.Println(strings.Right("ab\u0301cde", 8)) // "   ab́cde"
+
+	fmt.Println(strings.Center("", 5))            // "     "
+	fmt.Println(strings.Center("X", 5))           // "  X  "
+	fmt.Println(strings.Center("😎⚽", 4))        // " 😎⚽ "
+	fmt.Println(strings.Center("ab\u0301cde", 8)) // "  ab́cde "
+
 	fmt.Println(strings.Length(""))                                          // 0
 	fmt.Println(strings.Length("X"))                                         // 1
 	fmt.Println(strings.Length("b\u0301"))                                   // 1

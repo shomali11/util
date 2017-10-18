@@ -29,6 +29,42 @@ func TestIsNotBlank(t *testing.T) {
 	assert.True(t, IsNotBlank("text"))
 }
 
+func TestLeft(t *testing.T) {
+	assert.Equal(t, Left("", 5), "     ")
+	assert.Equal(t, Left("X", 5), "X    ")
+	assert.Equal(t, Left("b\u0301", 3), "b\u0301  ")
+	assert.Equal(t, Left("😎⚽", 4), "😎⚽  ")
+	assert.Equal(t, Left("Les Mise\u0301rables", 5), "Les Mise\u0301rables")
+	assert.Equal(t, Left("ab\u0301cde", 8), "ab\u0301cde   ")
+	assert.Equal(t, Left("This `\xc5` is an invalid UTF8 character", 5), "This `\xc5` is an invalid UTF8 character")
+	assert.Equal(t, Left("The quick bròwn 狐 jumped over the lazy 犬", 5), "The quick bròwn 狐 jumped over the lazy 犬")
+	assert.Equal(t, Left("رائد شوملي", 10), "رائد شوملي")
+}
+
+func TestRight(t *testing.T) {
+	assert.Equal(t, Right("", 5), "     ")
+	assert.Equal(t, Right("X", 5), "    X")
+	assert.Equal(t, Right("b\u0301", 3), "  b\u0301")
+	assert.Equal(t, Right("😎⚽", 4), "  😎⚽")
+	assert.Equal(t, Right("Les Mise\u0301rables", 5), "Les Mise\u0301rables")
+	assert.Equal(t, Right("ab\u0301cde", 8), "   ab\u0301cde")
+	assert.Equal(t, Right("This `\xc5` is an invalid UTF8 character", 5), "This `\xc5` is an invalid UTF8 character")
+	assert.Equal(t, Right("The quick bròwn 狐 jumped over the lazy 犬", 5), "The quick bròwn 狐 jumped over the lazy 犬")
+	assert.Equal(t, Right("رائد شوملي", 10), "رائد شوملي")
+}
+
+func TestCenter(t *testing.T) {
+	assert.Equal(t, Center("", 5), "     ")
+	assert.Equal(t, Center("X", 5), "  X  ")
+	assert.Equal(t, Center("b\u0301", 3), " b\u0301 ")
+	assert.Equal(t, Center("😎⚽", 4), " 😎⚽ ")
+	assert.Equal(t, Center("Les Mise\u0301rables", 5), "Les Mise\u0301rables")
+	assert.Equal(t, Center("ab\u0301cde", 8), "  ab\u0301cde ")
+	assert.Equal(t, Center("This `\xc5` is an invalid UTF8 character", 5), "This `\xc5` is an invalid UTF8 character")
+	assert.Equal(t, Center("The quick bròwn 狐 jumped over the lazy 犬", 5), "The quick bròwn 狐 jumped over the lazy 犬")
+	assert.Equal(t, Center("رائد شوملي", 10), "رائد شوملي")
+}
+
 func TestLength(t *testing.T) {
 	assert.Equal(t, Length(""), 0)
 	assert.Equal(t, Length("X"), 1)

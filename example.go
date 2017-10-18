@@ -60,6 +60,21 @@ func Strings() {
 	fmt.Println(strings.IsNotBlank("	"))
 	fmt.Println(strings.IsNotBlank("text"))
 
+	fmt.Println(strings.Left("", 5))
+	fmt.Println(strings.Left("X", 5))
+	fmt.Println(strings.Left("😎⚽", 4))
+	fmt.Println(strings.Left("ab\u0301cde", 8))
+
+	fmt.Println(strings.Right("", 5))
+	fmt.Println(strings.Right("X", 5))
+	fmt.Println(strings.Right("😎⚽", 4))
+	fmt.Println(strings.Right("ab\u0301cde", 8))
+
+	fmt.Println(strings.Center("", 5))
+	fmt.Println(strings.Center("X", 5))
+	fmt.Println(strings.Center("😎⚽", 4))
+	fmt.Println(strings.Center("ab\u0301cde", 8))
+
 	fmt.Println(strings.Length(""))
 	fmt.Println(strings.Length("X"))
 	fmt.Println(strings.Length("b\u0301"))
