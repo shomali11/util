@@ -23,7 +23,7 @@ govendor fetch github.com/shomali11/util
 package main
 
 import (
-	"github.com/shomali11/util/concurrency"
+	"github.com/shomali11/util/xconcurrency"
 	"time"
 	"fmt"
 )
@@ -41,9 +41,9 @@ func main() {
             }
     }
     
-    concurrency.Parallelize(func1, func2)  // a 1 b 2 c 3
+    xconcurrency.Parallelize(func1, func2)  // a 1 b 2 c 3
     
-    concurrency.ParallelizeTimeout(time.Minute, func1, func2)  // a 1 b 2 c 3
+    xconcurrency.ParallelizeTimeout(time.Minute, func1, func2)  // a 1 b 2 c 3
 }
 ```
 
@@ -53,19 +53,19 @@ func main() {
 package main
 
 import (
-	"github.com/shomali11/util/hashes"
+	"github.com/shomali11/util/xhashes"
 	"fmt"
 )
 
 func main() {
-	fmt.Println(hashes.FNV32("Raed Shomali"))  // 424383802
-	fmt.Println(hashes.FNV32a("Raed Shomali")) // 3711360776
-	fmt.Println(hashes.FNV64("Raed Shomali"))  // 13852322269024953050
-	fmt.Println(hashes.FNV64a("Raed Shomali")) // 17869303103005344072
-	fmt.Println(hashes.MD5("Raed Shomali"))    // c313bc3b48fcfed9abc733429665b105
-	fmt.Println(hashes.SHA1("Raed Shomali"))   // e0d66f6f09de72942e83289cc994b3c721ab34c5
-	fmt.Println(hashes.SHA256("Raed Shomali")) // 75894b9be21065a833e57bfe4440b375fc216f120a965243c9be8b2dc36709c2
-	fmt.Println(hashes.SHA512("Raed Shomali")) // 406e8d495140187a8b09893c30d054cf385ad7359855db0d2e0386c7189ac1c4667a4816d1b63a19f3d8ccdcbace7861ec4cc6ff5e2a1659c8f4360bda699b42
+	fmt.Println(xhashes.FNV32("Raed Shomali"))  // 424383802
+	fmt.Println(xhashes.FNV32a("Raed Shomali")) // 3711360776
+	fmt.Println(xhashes.FNV64("Raed Shomali"))  // 13852322269024953050
+	fmt.Println(xhashes.FNV64a("Raed Shomali")) // 17869303103005344072
+	fmt.Println(xhashes.MD5("Raed Shomali"))    // c313bc3b48fcfed9abc733429665b105
+	fmt.Println(xhashes.SHA1("Raed Shomali"))   // e0d66f6f09de72942e83289cc994b3c721ab34c5
+	fmt.Println(xhashes.SHA256("Raed Shomali")) // 75894b9be21065a833e57bfe4440b375fc216f120a965243c9be8b2dc36709c2
+	fmt.Println(xhashes.SHA512("Raed Shomali")) // 406e8d495140187a8b09893c30d054cf385ad7359855db0d2e0386c7189ac1c4667a4816d1b63a19f3d8ccdcbace7861ec4cc6ff5e2a1659c8f4360bda699b42
 }
 ```
 
@@ -75,12 +75,12 @@ func main() {
 package main
 
 import (
-	"github.com/shomali11/util/compressions"
+	"github.com/shomali11/util/xcompressions"
 	"fmt"
 )
 
 func main() {
-	fmt.Println(compressions.Compress("Raed Shomali"))
+	fmt.Println(xcompressions.Compress("Raed Shomali"))
 }
 ```
 
@@ -90,57 +90,57 @@ func main() {
 package main
 
 import (
-	"github.com/shomali11/util/strings"
+	"github.com/shomali11/util/xstrings"
 	"fmt"
 )
 
 func main() {
-	fmt.Println(strings.IsEmpty(""))     // true
-	fmt.Println(strings.IsEmpty("text")) // false
-	fmt.Println(strings.IsEmpty("	"))  // false
+	fmt.Println(xstrings.IsEmpty(""))     // true
+	fmt.Println(xstrings.IsEmpty("text")) // false
+	fmt.Println(xstrings.IsEmpty("	"))  // false
 
-	fmt.Println(strings.IsNotEmpty(""))     // false
-	fmt.Println(strings.IsNotEmpty("text")) // true
-	fmt.Println(strings.IsNotEmpty("	")) // true
+	fmt.Println(xstrings.IsNotEmpty(""))     // false
+	fmt.Println(xstrings.IsNotEmpty("text")) // true
+	fmt.Println(xstrings.IsNotEmpty("	")) // true
 
-	fmt.Println(strings.IsBlank(""))     // true
-	fmt.Println(strings.IsBlank("	"))  // true
-	fmt.Println(strings.IsBlank("text")) // false
+	fmt.Println(xstrings.IsBlank(""))     // true
+	fmt.Println(xstrings.IsBlank("	"))  // true
+	fmt.Println(xstrings.IsBlank("text")) // false
 
-	fmt.Println(strings.IsNotBlank(""))     // false
-	fmt.Println(strings.IsNotBlank("	")) // false
-	fmt.Println(strings.IsNotBlank("text")) // true
+	fmt.Println(xstrings.IsNotBlank(""))     // false
+	fmt.Println(xstrings.IsNotBlank("	")) // false
+	fmt.Println(xstrings.IsNotBlank("text")) // true
 
-	fmt.Println(strings.Left("", 5))            // "     "
-	fmt.Println(strings.Left("X", 5))           // "X    "
-	fmt.Println(strings.Left("😎⚽", 4))        // "😎⚽  "
-	fmt.Println(strings.Left("ab\u0301cde", 8)) // "ab́cde   "
+	fmt.Println(xstrings.Left("", 5))            // "     "
+	fmt.Println(xstrings.Left("X", 5))           // "X    "
+	fmt.Println(xstrings.Left("😎⚽", 4))        // "😎⚽  "
+	fmt.Println(xstrings.Left("ab\u0301cde", 8)) // "ab́cde   "
 
-	fmt.Println(strings.Right("", 5))            // "     "
-	fmt.Println(strings.Right("X", 5))           // "    X"
-	fmt.Println(strings.Right("😎⚽", 4))        // "  😎⚽"
-	fmt.Println(strings.Right("ab\u0301cde", 8)) // "   ab́cde"
+	fmt.Println(xstrings.Right("", 5))            // "     "
+	fmt.Println(xstrings.Right("X", 5))           // "    X"
+	fmt.Println(xstrings.Right("😎⚽", 4))        // "  😎⚽"
+	fmt.Println(xstrings.Right("ab\u0301cde", 8)) // "   ab́cde"
 
-	fmt.Println(strings.Center("", 5))            // "     "
-	fmt.Println(strings.Center("X", 5))           // "  X  "
-	fmt.Println(strings.Center("😎⚽", 4))        // " 😎⚽ "
-	fmt.Println(strings.Center("ab\u0301cde", 8)) // "  ab́cde "
+	fmt.Println(xstrings.Center("", 5))            // "     "
+	fmt.Println(xstrings.Center("X", 5))           // "  X  "
+	fmt.Println(xstrings.Center("😎⚽", 4))        // " 😎⚽ "
+	fmt.Println(xstrings.Center("ab\u0301cde", 8)) // "  ab́cde "
 
-	fmt.Println(strings.Length(""))                                          // 0
-	fmt.Println(strings.Length("X"))                                         // 1
-	fmt.Println(strings.Length("b\u0301"))                                   // 1
-	fmt.Println(strings.Length("😎⚽"))                                      // 2
-	fmt.Println(strings.Length("Les Mise\u0301rables"))                      // 14
-	fmt.Println(strings.Length("ab\u0301cde"))                               // 5
-	fmt.Println(strings.Length("This `\xc5` is an invalid UTF8 character"))  // 37
-	fmt.Println(strings.Length("The quick bròwn 狐 jumped over the lazy 犬")) // 40
+	fmt.Println(xstrings.Length(""))                                          // 0
+	fmt.Println(xstrings.Length("X"))                                         // 1
+	fmt.Println(xstrings.Length("b\u0301"))                                   // 1
+	fmt.Println(xstrings.Length("😎⚽"))                                      // 2
+	fmt.Println(xstrings.Length("Les Mise\u0301rables"))                      // 14
+	fmt.Println(xstrings.Length("ab\u0301cde"))                               // 5
+	fmt.Println(xstrings.Length("This `\xc5` is an invalid UTF8 character"))  // 37
+	fmt.Println(xstrings.Length("The quick bròwn 狐 jumped over the lazy 犬")) // 40
 
-	fmt.Println(strings.Reverse(""))                                            // ""
-	fmt.Println(strings.Reverse("X"))                                           // "X"
-	fmt.Println(strings.Reverse("😎⚽"))                                        // "⚽😎"
-	fmt.Println(strings.Reverse("Les Mise\u0301rables"))                        // "selbare\u0301siM seL"
-	fmt.Println(strings.Reverse("This `\xc5` is an invalid UTF8 character"))    // "retcarahc 8FTU dilavni na si `�` sihT"
-	fmt.Println(strings.Reverse("The quick bròwn 狐 jumped over the lazy 犬"))  // "犬 yzal eht revo depmuj 狐 nwòrb kciuq ehT"
+	fmt.Println(xstrings.Reverse(""))                                            // ""
+	fmt.Println(xstrings.Reverse("X"))                                           // "X"
+	fmt.Println(xstrings.Reverse("😎⚽"))                                        // "⚽😎"
+	fmt.Println(xstrings.Reverse("Les Mise\u0301rables"))                        // "selbare\u0301siM seL"
+	fmt.Println(xstrings.Reverse("This `\xc5` is an invalid UTF8 character"))    // "retcarahc 8FTU dilavni na si `�` sihT"
+	fmt.Println(xstrings.Reverse("The quick bròwn 狐 jumped over the lazy 犬"))  // "犬 yzal eht revo depmuj 狐 nwòrb kciuq ehT"
 }
 ```
 
@@ -150,33 +150,33 @@ func main() {
 package main
 
 import (
-	"github.com/shomali11/util/conditions"
+	"github.com/shomali11/util/xconditions"
 	"fmt"
 )
 
 func main() {
-	fmt.Println(conditions.IfThen(1 == 1, "Yes")) // "Yes"
-	fmt.Println(conditions.IfThen(1 != 1, "Woo")) // nil
-	fmt.Println(conditions.IfThen(1 < 2, "Less")) // "Less"
+	fmt.Println(xconditions.IfThen(1 == 1, "Yes")) // "Yes"
+	fmt.Println(xconditions.IfThen(1 != 1, "Woo")) // nil
+	fmt.Println(xconditions.IfThen(1 < 2, "Less")) // "Less"
 
-	fmt.Println(conditions.IfThenElse(1 == 1, "Yes", false)) // "Yes"
-	fmt.Println(conditions.IfThenElse(1 != 1, nil, 1))       // 1
-	fmt.Println(conditions.IfThenElse(1 < 2, nil, "No"))     // nil
+	fmt.Println(xconditions.IfThenElse(1 == 1, "Yes", false)) // "Yes"
+	fmt.Println(xconditions.IfThenElse(1 != 1, nil, 1))       // 1
+	fmt.Println(xconditions.IfThenElse(1 < 2, nil, "No"))     // nil
 
-	fmt.Println(conditions.DefaultIfNil(nil, nil))  // nil
-	fmt.Println(conditions.DefaultIfNil(nil, ""))   // ""
-	fmt.Println(conditions.DefaultIfNil("A", "B"))  // "A"
-	fmt.Println(conditions.DefaultIfNil(true, "B")) // true
-	fmt.Println(conditions.DefaultIfNil(1, false))  // 1
+	fmt.Println(xconditions.DefaultIfNil(nil, nil))  // nil
+	fmt.Println(xconditions.DefaultIfNil(nil, ""))   // ""
+	fmt.Println(xconditions.DefaultIfNil("A", "B"))  // "A"
+	fmt.Println(xconditions.DefaultIfNil(true, "B")) // true
+	fmt.Println(xconditions.DefaultIfNil(1, false))  // 1
 
-	fmt.Println(conditions.FirstNonNil(nil, nil))                // nil
-	fmt.Println(conditions.FirstNonNil(nil, ""))                 // ""
-	fmt.Println(conditions.FirstNonNil("A", "B"))                // "A"
-	fmt.Println(conditions.FirstNonNil(true, "B"))               // true
-	fmt.Println(conditions.FirstNonNil(1, false))                // 1
-	fmt.Println(conditions.FirstNonNil(nil, nil, nil, 10))       // 10
-	fmt.Println(conditions.FirstNonNil(nil, nil, nil, nil, nil)) // nil
-	fmt.Println(conditions.FirstNonNil())                        // nil
+	fmt.Println(xconditions.FirstNonNil(nil, nil))                // nil
+	fmt.Println(xconditions.FirstNonNil(nil, ""))                 // ""
+	fmt.Println(xconditions.FirstNonNil("A", "B"))                // "A"
+	fmt.Println(xconditions.FirstNonNil(true, "B"))               // true
+	fmt.Println(xconditions.FirstNonNil(1, false))                // 1
+	fmt.Println(xconditions.FirstNonNil(nil, nil, nil, 10))       // 10
+	fmt.Println(xconditions.FirstNonNil(nil, nil, nil, nil, nil)) // nil
+	fmt.Println(xconditions.FirstNonNil())                        // nil
 }
 ```
 
@@ -186,13 +186,13 @@ func main() {
 package main
 
 import (
-	"github.com/shomali11/util/errors"
+	"github.com/shomali11/util/xerrors"
 	"fmt"
 )
 
 func main() {
-	fmt.Println(errors.DefaultErrorIfNil(nil, "Cool"))                // "Cool"
-	fmt.Println(errors.DefaultErrorIfNil(errors.New("Oops"), "Cool")) // "Oops"
+	fmt.Println(xerrors.DefaultErrorIfNil(nil, "Cool"))                // "Cool"
+	fmt.Println(xerrors.DefaultErrorIfNil(errors.New("Oops"), "Cool")) // "Oops"
 }
 ```
 
@@ -202,7 +202,7 @@ func main() {
 package main
 
 import (
-	"github.com/shomali11/util/manipulations"
+	"github.com/shomali11/util/xmanipulations"
 	"math/rand"
 	"time"
 	"fmt"
@@ -212,7 +212,7 @@ func main() {
 	source := rand.NewSource(time.Now().UnixNano())
 
 	array := []interface{}{"a", "b", "c"}
-	manipulations.Shuffle(array, source)
+	xmanipulations.Shuffle(array, source)
 
 	fmt.Println(array) // [c b a]
 }
@@ -226,17 +226,17 @@ Given two integers representing the numerator and denominator of a fraction, ret
 package main
 
 import (
-	"github.com/shomali11/util/calculations"
+	"github.com/shomali11/util/xcalculations"
 	"fmt"
 )
 
 func main() {
-    fmt.Println(calculations.Divide(0, 0))     // "ERROR"
-    fmt.Println(calculations.Divide(1, 2))     // "0.5(0)"
-    fmt.Println(calculations.Divide(0, 3))     // "0.(0)"
-    fmt.Println(calculations.Divide(10, 3))    // "3.(3)"
-    fmt.Println(calculations.Divide(22, 7))    // "3.(142857)"
-    fmt.Println(calculations.Divide(100, 145)) // "0.(6896551724137931034482758620)"
+    fmt.Println(xcalculations.Divide(0, 0))     // "ERROR"
+    fmt.Println(xcalculations.Divide(1, 2))     // "0.5(0)"
+    fmt.Println(xcalculations.Divide(0, 3))     // "0.(0)"
+    fmt.Println(xcalculations.Divide(10, 3))    // "3.(3)"
+    fmt.Println(xcalculations.Divide(22, 7))    // "3.(142857)"
+    fmt.Println(xcalculations.Divide(100, 145)) // "0.(6896551724137931034482758620)"
 }
 ```
 
@@ -248,13 +248,13 @@ Return a pretty JSON representation of any interface
 package main
 
 import (
-	"github.com/shomali11/util/conversions"
+	"github.com/shomali11/util/xconversions"
 	"fmt"
 )
 
 func main() {
     x := map[string]interface{}{"number": 1, "string": "cool", "bool": true, "float": 1.5}    
-    fmt.Println(conversions.PrettyJson(x))
+    fmt.Println(xconversions.PrettyJson(x))
 }
 ```
 
@@ -273,13 +273,13 @@ Convert any interface to a String
 package main
 
 import (
-	"github.com/shomali11/util/conversions"
+	"github.com/shomali11/util/xconversions"
 	"fmt"
 )
 
 func main() {
     x := map[string]interface{}{"number": 1, "string": "cool", "bool": true, "float": 1.5}    
-    fmt.Println(conversions.Stringify(x))
+    fmt.Println(xconversions.Stringify(x))
 }
 ```
 
@@ -293,14 +293,14 @@ Convert any string back to its original struct
 package main
 
 import (
-	"github.com/shomali11/util/conversions"
+	"github.com/shomali11/util/xconversions"
 	"fmt"
 )
 
 func main() {
 	x := "{\"bool\":true,\"float\":1.5,\"number\":1,\"string\":\"cool\"}"
 	var results map[string]interface{}
-    fmt.Println(conversions.Structify(x, &results))
+    fmt.Println(xconversions.Structify(x, &results))
     fmt.Println(results)
 }
 ```

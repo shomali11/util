@@ -1,4 +1,4 @@
-package compressions
+package xcompressions
 
 import (
 	"github.com/stretchr/testify/assert"

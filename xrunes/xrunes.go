@@ -1,4 +1,4 @@
-package runes
+package xrunes
 
 import "unicode"
 

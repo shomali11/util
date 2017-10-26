@@ -1,8 +1,8 @@
-package strings
+package xstrings
 
 import (
 	"bytes"
-	"github.com/shomali11/util/runes"
+	"github.com/shomali11/util/xrunes"
 	"strings"
 )
 
@@ -64,8 +64,8 @@ func Right(text string, size int) string {
 
 // Center justifies the text in the center
 func Center(text string, size int) string {
-	left := Left(text, (Length(text)+size)/2)
-	return Right(left, size)
+	left := Right(text, (Length(text)+size)/2)
+	return Left(left, size)
 }
 
 // Length counts the input while respecting UTF8 encoding and combined characters
@@ -76,7 +76,7 @@ func Length(text string) int {
 	sum, i, j := 0, 0, 0
 	for i < textRunesLength && j < textRunesLength {
 		j = i + 1
-		for j < textRunesLength && runes.IsMark(textRunes[j]) {
+		for j < textRunesLength && xrunes.IsMark(textRunes[j]) {
 			j++
 		}
 		sum++
@@ -96,11 +96,11 @@ func Reverse(text string) string {
 	i, j := 0, 0
 	for i < textRunesLength && j < textRunesLength {
 		j = i + 1
-		for j < textRunesLength && runes.IsMark(textRunes[j]) {
+		for j < textRunesLength && xrunes.IsMark(textRunes[j]) {
 			j++
 		}
 
-		if runes.IsMark(textRunes[j-1]) {
+		if xrunes.IsMark(textRunes[j-1]) {
 			// Reverses Combined Characters
 			reverse(textRunes[i:j], j-i)
 		}

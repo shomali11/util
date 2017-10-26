@@ -1,4 +1,4 @@
-package hashes
+package xhashes
 
 import (
 	"github.com/stretchr/testify/assert"

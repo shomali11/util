@@ -1,4 +1,4 @@
-package calculations
+package xcalculations
 
 import (
 	"github.com/stretchr/testify/assert"

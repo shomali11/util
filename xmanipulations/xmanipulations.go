@@ -1,4 +1,4 @@
-package manipulations
+package xmanipulations
 
 import (
 	"math/rand"

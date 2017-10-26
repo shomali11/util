@@ -1,4 +1,4 @@
-package concurrency
+package xconcurrency
 
 import (
 	"github.com/shomali11/parallelizer"
