@@ -6,16 +6,16 @@ import (
 )
 
 func TestCompress(t *testing.T) {
-	data, err := Compress("Raed Shomali")
+	data, err := Compress([]byte("Raed Shomali"))
 	assert.Nil(t, err)
 
-	text, err := Decompress(data)
+	decompressedData, err := Decompress(data)
 	assert.Nil(t, err)
 
-	assert.Equal(t, text, "Raed Shomali")
+	assert.Equal(t, string(decompressedData), "Raed Shomali")
 }
 
 func TestDecompress(t *testing.T) {
-	_, err := Decompress("Kaka")
+	_, err := Decompress([]byte("Kaka"))
 	assert.NotNil(t, err)
 }

@@ -80,7 +80,23 @@ import (
 )
 
 func main() {
-	fmt.Println(xcompressions.Compress("Raed Shomali"))
+	fmt.Println(xcompressions.Compress([]byte("Raed Shomali")))
+}
+```
+
+## Encodings
+
+```go
+package main
+
+import (
+	"github.com/shomali11/util/xencodings"
+	"fmt"
+)
+
+func main() {
+	fmt.Println(xencodings.Base32Encode([]byte("Raed Shomali")))
+	fmt.Println(xencodings.Base64Encode([]byte("Raed Shomali")))
 }
 ```
 

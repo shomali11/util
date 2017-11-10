@@ -7,6 +7,7 @@ import (
 	"github.com/shomali11/util/xconcurrency"
 	"github.com/shomali11/util/xconditions"
 	"github.com/shomali11/util/xconversions"
+	"github.com/shomali11/util/xencodings"
 	"github.com/shomali11/util/xerrors"
 	"github.com/shomali11/util/xhashes"
 	"github.com/shomali11/util/xmanipulations"
@@ -19,6 +20,7 @@ func main() {
 	Hashes()
 	Errors()
 	Strings()
+	Encodings()
 	Conditions()
 	Conversions()
 	Calculations()
@@ -128,7 +130,12 @@ func Calculations() {
 }
 
 func Compressions() {
-	fmt.Println(xcompressions.Compress("Raed Shomali"))
+	fmt.Println(xcompressions.Compress([]byte("Raed Shomali")))
+}
+
+func Encodings() {
+	fmt.Println(xencodings.Base32Encode([]byte("Raed Shomali")))
+	fmt.Println(xencodings.Base64Encode([]byte("Raed Shomali")))
 }
 
 func Hashes() {

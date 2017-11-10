@@ -6,49 +6,44 @@ import (
 	"io/ioutil"
 )
 
-const (
-	empty = ""
-)
-
-// Compress returns a compressed string
-func Compress(text string) (string, error) {
+// Compress returns compressed bytes
+func Compress(data []byte) ([]byte, error) {
 	var buffer bytes.Buffer
 	gzipWriter := gzip.NewWriter(&buffer)
 
-	_, err := gzipWriter.Write([]byte(text))
+	_, err := gzipWriter.Write(data)
 	if err != nil {
-		return empty, err
+		return nil, err
 	}
 
 	err = gzipWriter.Flush()
 	if err != nil {
-		return empty, err
+		return nil, err
 	}
 
 	err = gzipWriter.Close()
 	if err != nil {
-		return empty, err
+		return nil, err
 	}
-	return string(buffer.Bytes()), nil
+	return buffer.Bytes(), nil
 }
 
-// Decompress returns the decompressed string
-func Decompress(data string) (string, error) {
-	dataBytes := []byte(data)
-	byteReader := bytes.NewReader(dataBytes)
+// Decompress returns the decompressed bytes
+func Decompress(data []byte) ([]byte, error) {
+	byteReader := bytes.NewReader(data)
 	gzipReader, err := gzip.NewReader(byteReader)
 	if err != nil {
-		return empty, err
+		return nil, err
 	}
 
-	textBytes, err := ioutil.ReadAll(gzipReader)
+	decompressedBytes, err := ioutil.ReadAll(gzipReader)
 	if err != nil {
-		return empty, err
+		return nil, err
 	}
 
 	err = gzipReader.Close()
 	if err != nil {
-		return empty, err
+		return nil, err
 	}
-	return string(textBytes), nil
+	return decompressedBytes, nil
 }
