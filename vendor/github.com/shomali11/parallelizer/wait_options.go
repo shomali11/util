@@ -1,29 +1,27 @@
 package parallelizer
 
-import "time"
-
-const (
-	defaultTimeout = 0
+import (
+	"context"
 )
 
 // WaitOptions configuration for the Wait
 type WaitOptions struct {
-	Timeout time.Duration
+	Context context.Context
 }
 
 // WaitOption an option for Waiting
 type WaitOption func(*WaitOptions)
 
-// WithTimeout sets timeout
-func WithTimeout(timeout time.Duration) WaitOption {
+// WithContext sets context
+func WithContext(ctx context.Context) WaitOption {
 	return func(options *WaitOptions) {
-		options.Timeout = timeout
+		options.Context = ctx
 	}
 }
 
 func newWaitOptions(options ...WaitOption) *WaitOptions {
 	config := &WaitOptions{
-		Timeout: defaultTimeout,
+		Context: context.Background(),
 	}
 
 	for _, option := range options {

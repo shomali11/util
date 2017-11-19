@@ -3,11 +3,9 @@ package parallelizer
 import (
 	"errors"
 	"sync"
-	"time"
 )
 
 const (
-	timeoutError     = "timeout"
 	nilFunctionError = "nil function"
 )
 
@@ -15,15 +13,15 @@ const (
 func NewGroup(options ...GroupOption) *Group {
 	groupOptions := newGroupOptions(options...)
 
-	pool := &Group{
+	group := &Group{
 		jobsChannel: make(chan func(), groupOptions.JobQueueSize),
 		waitGroup:   &sync.WaitGroup{},
 	}
 
 	for i := 1; i <= groupOptions.PoolSize; i++ {
-		go pool.worker()
+		go group.worker()
 	}
-	return pool
+	return group
 }
 
 // Group a group of workers executing functions concurrently
@@ -47,12 +45,6 @@ func (g *Group) Add(function func()) error {
 func (g *Group) Wait(options ...WaitOption) error {
 	waitOptions := newWaitOptions(options...)
 
-	// If no timeout was provided
-	if waitOptions.Timeout <= 0 {
-		g.waitGroup.Wait()
-		return nil
-	}
-
 	channel := make(chan bool)
 	go func() {
 		g.waitGroup.Wait()
@@ -60,10 +52,10 @@ func (g *Group) Wait(options ...WaitOption) error {
 	}()
 
 	select {
+	case <-waitOptions.Context.Done():
+		return waitOptions.Context.Err()
 	case <-channel:
 		return nil
-	case <-time.After(waitOptions.Timeout):
-		return errors.New(timeoutError)
 	}
 }
 
