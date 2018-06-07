@@ -11,14 +11,6 @@ Simplifies creating a pool of workers that execute jobs in parallel
 * Customizable Job Queue Size
     * Default size is 100
 
-## Usage
-
-Using `govendor` [github.com/kardianos/govendor](https://github.com/kardianos/govendor):
-
-```
-govendor fetch github.com/shomali11/parallelizer
-```
-
 # Examples
 
 ## Example 1
