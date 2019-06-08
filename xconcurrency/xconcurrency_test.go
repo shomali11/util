@@ -18,8 +18,8 @@ func TestParallelize(t *testing.T) {
 		value2 = 22
 	}
 
-	Parallelize(fun1, fun2)
-
+	err := Parallelize(fun1, fun2)
+	assert.Nil(t, err)
 	assert.Equal(t, value1, 11)
 	assert.Equal(t, value2, 22)
 }
@@ -36,8 +36,8 @@ func TestParallelizerLongTimeout(t *testing.T) {
 		value2 = 22
 	}
 
-	ParallelizeTimeout(time.Minute, fun1, fun2)
-
+	err := ParallelizeTimeout(time.Minute, fun1, fun2)
+	assert.Nil(t, err)
 	assert.Equal(t, value1, 11)
 	assert.Equal(t, value2, 22)
 }
@@ -56,8 +56,8 @@ func TestParallelizerShortTimeout(t *testing.T) {
 		value2 = 22
 	}
 
-	ParallelizeTimeout(time.Second, fun1, fun2)
-
+	err := ParallelizeTimeout(time.Second, fun1, fun2)
+	assert.NotNil(t, err)
 	assert.Equal(t, value1, 1)
 	assert.Equal(t, value2, 2)
 }

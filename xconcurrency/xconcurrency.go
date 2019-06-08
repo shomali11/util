@@ -8,7 +8,7 @@ import (
 
 // Parallelize parallelizes the function calls
 func Parallelize(functions ...func()) error {
-	return ParallelizeTimeout(0, functions...)
+	return ParallelizeContext(context.Background(), functions...)
 }
 
 // ParallelizeTimeout parallelizes the function calls with a timeout
