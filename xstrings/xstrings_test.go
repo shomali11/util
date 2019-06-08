@@ -59,7 +59,7 @@ func TestCenter(t *testing.T) {
 	assert.Equal(t, Center("b\u0301", 3), " b\u0301 ")
 	assert.Equal(t, Center("😎⚽", 4), " 😎⚽ ")
 	assert.Equal(t, Center("Les Mise\u0301rables", 5), "Les Mise\u0301rables")
-	assert.Equal(t, Center("ab\u0301cde", 8), "  ab\u0301cde ")
+	assert.Equal(t, Center("ab\u0301cde", 8), " ab\u0301cde  ")
 	assert.Equal(t, Center("This `\xc5` is an invalid UTF8 character", 5), "This `\xc5` is an invalid UTF8 character")
 	assert.Equal(t, Center("The quick bròwn 狐 jumped over the lazy 犬", 5), "The quick bròwn 狐 jumped over the lazy 犬")
 	assert.Equal(t, Center("رائد شوملي", 10), "رائد شوملي")
