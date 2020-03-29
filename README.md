@@ -226,28 +226,6 @@ func main() {
 }
 ```
 
-## Calculations
-
-Given two integers representing the numerator and denominator of a fraction, return the fraction in string format with the repeating part enclosed in parentheses
-
-```go
-package main
-
-import (
-	"github.com/shomali11/util/xcalculations"
-	"fmt"
-)
-
-func main() {
-    fmt.Println(xcalculations.Divide(0, 0))     // "ERROR"
-    fmt.Println(xcalculations.Divide(1, 2))     // "0.5(0)"
-    fmt.Println(xcalculations.Divide(0, 3))     // "0.(0)"
-    fmt.Println(xcalculations.Divide(10, 3))    // "3.(3)"
-    fmt.Println(xcalculations.Divide(22, 7))    // "3.(142857)"
-    fmt.Println(xcalculations.Divide(100, 145)) // "0.(6896551724137931034482758620)"
-}
-```
-
 ## Conversions
 
 Return a pretty JSON representation of any interface

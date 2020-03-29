@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/shomali11/util/xcalculations"
+	"math/rand"
+	"time"
+
 	"github.com/shomali11/util/xcompressions"
 	"github.com/shomali11/util/xconcurrency"
 	"github.com/shomali11/util/xconditions"
@@ -12,8 +14,6 @@ import (
 	"github.com/shomali11/util/xhashes"
 	"github.com/shomali11/util/xmanipulations"
 	"github.com/shomali11/util/xstrings"
-	"math/rand"
-	"time"
 )
 
 func main() {
@@ -23,7 +23,6 @@ func main() {
 	Encodings()
 	Conditions()
 	Conversions()
-	Calculations()
 	Manipulations()
 	Compressions()
 	Concurrency()
@@ -118,15 +117,6 @@ func Conditions() {
 	fmt.Println(xconditions.FirstNonNil(nil, nil, nil, 10))
 	fmt.Println(xconditions.FirstNonNil(nil, nil, nil, nil, nil))
 	fmt.Println(xconditions.FirstNonNil())
-}
-
-func Calculations() {
-	fmt.Println(xcalculations.Divide(0, 0))
-	fmt.Println(xcalculations.Divide(1, 2))
-	fmt.Println(xcalculations.Divide(0, 3))
-	fmt.Println(xcalculations.Divide(10, 3))
-	fmt.Println(xcalculations.Divide(22, 7))
-	fmt.Println(xcalculations.Divide(100, 145))
 }
 
 func Compressions() {
