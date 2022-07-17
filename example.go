@@ -149,16 +149,18 @@ func Manipulations() {
 }
 
 func Concurrency() {
-	func1 := func() {
+	func1 := func() error {
 		for char := 'a'; char < 'a'+3; char++ {
 			fmt.Printf("%c ", char)
 		}
+		return nil
 	}
 
-	func2 := func() {
+	func2 := func() error {
 		for number := 1; number < 4; number++ {
 			fmt.Printf("%d ", number)
 		}
+		return nil
 	}
 
 	xconcurrency.Parallelize(func1, func2)

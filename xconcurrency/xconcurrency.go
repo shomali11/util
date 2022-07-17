@@ -7,12 +7,12 @@ import (
 )
 
 // Parallelize parallelizes the function calls
-func Parallelize(functions ...func()) error {
+func Parallelize(functions ...func() error) error {
 	return ParallelizeContext(context.Background(), functions...)
 }
 
 // ParallelizeTimeout parallelizes the function calls with a timeout
-func ParallelizeTimeout(timeout time.Duration, functions ...func()) error {
+func ParallelizeTimeout(timeout time.Duration, functions ...func() error) error {
 	ctx, cancel := context.WithTimeout(context.Background(), timeout)
 	defer cancel()
 
@@ -20,7 +20,7 @@ func ParallelizeTimeout(timeout time.Duration, functions ...func()) error {
 }
 
 // ParallelizeContext parallelizes the function calls with a context
-func ParallelizeContext(ctx context.Context, functions ...func()) error {
+func ParallelizeContext(ctx context.Context, functions ...func() error) error {
 	group := parallelizer.NewGroup()
 	for _, function := range functions {
 		group.Add(function)
